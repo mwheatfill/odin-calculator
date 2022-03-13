@@ -1,0 +1,80 @@
+*, ::after, ::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container {
+  background-color: navy;
+  width: 400px;
+  height:800px;
+
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 2rem;
+
+}
+
+.display {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  color: white;
+  height: 8rem;
+  font-size: 3rem;
+  padding: 1.5rem;
+}
+
+.numberpad {
+  display: flex;
+  justify-content: space-around;
+}
+
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+  justify-content: space-around;
+  width: 60%
+}
+
+.operations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 40%
+}
+
+.number, .operation {
+  background-color: black;
+  color: white;
+  font-size: 2rem;
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  border-radius: 50%;
+  padding: 1rem;
+}
+
+.number {
+
+}
+
+.operation {
+
+}
+
+
