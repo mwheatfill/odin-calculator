@@ -1,4 +1,23 @@
-*, ::after, ::before {
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap');
+
+/* Variables */
+:root {
+  /* Color variables */
+  --light-cornflower-blue: hsla(199, 64%, 73%, 1);
+  --blue-green: hsla(192, 70%, 43%, 1);
+  --prussian-blue: hsla(200, 95%, 14%, 1);
+  --sapphire-blue: hsla(200, 94%, 28%, 1);
+  --selective-yellow: hsla(43, 100%, 51%, 1);
+  --tangerine: hsla(32, 100%, 49%, 1);
+
+  /* Font variables */
+  --ff-primary: 'Roboto', sans-serif;
+}
+
+*,
+::after,
+::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,6 +25,8 @@
 
 body {
   min-height: 100vh;
+  font-family: var(--ff-primary);
+  font-weight: 400;
 }
 
 main {
@@ -15,16 +36,15 @@ main {
 }
 
 .container {
-  background-color: navy;
+  background-image: linear-gradient(var(--sapphire-blue), var(--prussian-blue));
   width: 400px;
-  height:800px;
+  height: 800px;
   padding: 1rem;
 
   display: flex;
   flex-direction: column;
 
   border-radius: 2rem;
-
 }
 
 .display {
@@ -41,10 +61,12 @@ main {
 .numberpad {
   display: flex;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: flex-end;
+  column-gap: 0.5rem;
 }
 
-.numbers, .operations {
+.numbers,
+.operations {
   display: flex;
   flex-wrap: wrap;
   row-gap: 1rem;
@@ -52,15 +74,15 @@ main {
 }
 
 .numbers {
-  width: 60%
+  width: 60%;
 }
 
 .operations {
-  width: 40%
+  width: 40%;
 }
 
-.number, .operation {
-  background-color: black;
+.number,
+.operation {
   color: white;
   font-size: 2rem;
   width: 4rem;
@@ -71,11 +93,16 @@ main {
 }
 
 .number {
-
+  background-color: var(--prussian-blue);
 }
 
 .operation {
-
+  background-color: var(--blue-green);
 }
 
+#equal {
+  flex-grow: 1;
+  border-radius: 2rem;
+  background-color: var(--tangerine);
 
+}
