@@ -1,18 +1,20 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap');
 
 /* Variables */
 :root {
   /* Color variables */
+  --white: hsl(0, 0%, 100%, 0.9);
   --light-cornflower-blue: hsla(199, 64%, 73%, 1);
   --blue-green: hsla(192, 70%, 43%, 1);
+  --rich-black: hsla(200, 95%, 8%, 1);
   --prussian-blue: hsla(200, 95%, 14%, 1);
   --sapphire-blue: hsla(200, 94%, 28%, 1);
   --selective-yellow: hsla(43, 100%, 51%, 1);
   --tangerine: hsla(32, 100%, 49%, 1);
 
   /* Font variables */
-  --ff-primary: 'Roboto', sans-serif;
+  --ff-primary: 'Motserrat', sans-serif;
 }
 
 *,
@@ -23,28 +25,36 @@
   box-sizing: border-box;
 }
 
+body, button {
+  font-family: var(--ff-primary);
+  font-weight: 200;
+  line-height: 2rem;
+}
+
 body {
   min-height: 100vh;
-  font-family: var(--ff-primary);
-  font-weight: 400;
+
 }
 
 main {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  margin-top: 2rem;
 }
 
 .container {
   background-image: linear-gradient(var(--sapphire-blue), var(--prussian-blue));
+  border: 0.4rem solid var(--rich-black);
   width: 400px;
-  height: 800px;
-  padding: 1rem;
+  height: 700px;
+  padding: 4rem 1rem;
 
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
 
-  border-radius: 2rem;
+  border-radius: 3rem;
 }
 
 .display {
@@ -52,7 +62,7 @@ main {
   justify-content: flex-end;
   align-items: center;
 
-  color: white;
+  color: var(--white);
   height: 8rem;
   font-size: 3rem;
   padding: 1.5rem;
@@ -61,7 +71,7 @@ main {
 .numberpad {
   display: flex;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: flex-start;
   column-gap: 0.5rem;
 }
 
@@ -83,7 +93,7 @@ main {
 
 .number,
 .operation {
-  color: white;
+  color: var(--white);
   font-size: 2rem;
   width: 4rem;
   height: 4rem;
