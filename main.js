@@ -113,7 +113,7 @@ const updateOperator = function (e) {
     clearExpression();
 
     if (result == 'Infinity') {
-      updateDisplay('To infinity and beyond!');
+      updateDisplay('To infinity and beyond! 🚀');
     } else {
       expression.leftValue = String(result).substring(0, 10);
 
