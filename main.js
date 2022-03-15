@@ -37,9 +37,24 @@ const operate = (operator, firstValue, secondValue) => {
   }
 };
 
+const toggleDecimalButton = function () {
+  console.log(expression.leftValue)
+  if (expression.leftValue.includes('.') && expression.operator == '') {
+    return true;
+  } else if (expression.operator != '' && expression.rightValue.includes('.')) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 const updateDisplay = function (value) {
   const display = document.querySelector('.display');
-  !value ? (display.textContent = value) : (display.textContent += value);
+  const decimalButton = document.querySelector('#decimal');
+  decimalButton.disabled = toggleDecimalButton();
+  display.textContent = value;
+
+
 };
 
 const clearExpression = function () {
@@ -57,32 +72,44 @@ const updateValue = function (e) {
 
   if (!expression.operator) {
     expression.leftValue += e.target.textContent;
-    updateDisplay(e.target.textContent);
   }
 
   if (expression.operator) {
     expression.rightValue += e.target.textContent;
-    updateDisplay(e.target.textContent);
   }
   console.log(expression);
+  updateDisplay(
+    `${expression.leftValue} ${expression.operator} ${expression.rightValue}`
+  );
 };
 
 const updateOperator = function (e) {
-  if (!expression.leftValue) {
+  if (
+    !expression.leftValue ||
+    (!expression.rightValue && e.target.textContent == '=')
+  ) {
     return;
   }
-  if (!expression.operator || !expression.rightValue) {
+  if (!expression.operator) {
     expression.operator = e.target.textContent;
-    updateDisplay(expression.operator);
   }
+  updateDisplay(`${expression.leftValue} ${expression.operator}`);
 
   if (expression.rightValue) {
-    result = (operate(expression.operator, Number(expression.leftValue), Number(expression.rightValue)));
+    result = operate(
+      expression.operator,
+      Number(expression.leftValue),
+      Number(expression.rightValue)
+    );
     clearExpression();
-    expression.leftValue = result;
+    expression.leftValue = String(result).substring(0, 10);
+    e.target.textContent != '='
+      ? (expression.operator = e.target.textContent)
+      : (expression.operator = '');
     updateDisplay('');
-    updateDisplay(result);
+    updateDisplay(`${expression.leftValue} ${expression.operator}`);
   }
+  console.log(expression);
 };
 
 const numbers = document.querySelectorAll('.number');

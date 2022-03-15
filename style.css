@@ -70,6 +70,7 @@ main {
   color: var(--white);
   height: 8rem;
   font-size: 3rem;
+  line-height: 3.5rem;
   padding: 1rem;
 }
 
