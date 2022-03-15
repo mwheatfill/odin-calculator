@@ -93,6 +93,10 @@ const updateOperator = function (e) {
   if (!expression.operator) {
     expression.operator = e.target.textContent;
   }
+
+  if (expression.operator && !expression.rightValue) {
+    expression.operator = e.target.textContent;
+  }
   updateDisplay(`${expression.leftValue} ${expression.operator}`);
 
   if (expression.rightValue) {
