@@ -43,7 +43,6 @@ const operate = (operator, firstValue, secondValue) => {
 
 // disables decimal button if it is detected in value
 const toggleDecimalButton = function () {
-  console.log(expression.leftValue);
   if (expression.leftValue.includes('.') && expression.operator == '') {
     return true;
   } else if (expression.operator != '' && expression.rightValue.includes('.')) {
@@ -83,7 +82,6 @@ const updateValue = function (e) {
   if (expression.operator) {
     expression.rightValue += e.target.textContent;
   }
-  console.log(expression);
   updateDisplay(
     `${expression.leftValue} ${expression.operator} ${expression.rightValue}`
   );
@@ -125,7 +123,6 @@ const updateOperator = function (e) {
         updateDisplay(`${expression.leftValue} ${expression.operator}`);
     }
   }
-  console.log(expression);
 };
 
 //////////////////
