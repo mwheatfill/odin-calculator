@@ -1,3 +1,7 @@
+//////////////////
+// functions
+/////////////////
+
 // add function
 const add = (a, b) => {
   return a + b;
@@ -37,6 +41,7 @@ const operate = (operator, firstValue, secondValue) => {
   }
 };
 
+// disables decimal button if it is detected in value
 const toggleDecimalButton = function () {
   console.log(expression.leftValue)
   if (expression.leftValue.includes('.') && expression.operator == '') {
@@ -48,21 +53,25 @@ const toggleDecimalButton = function () {
   }
 };
 
+// updates display when input is detected
 const updateDisplay = function (value) {
   const display = document.querySelector('.display');
   const decimalButton = document.querySelector('#decimal');
+
   decimalButton.disabled = toggleDecimalButton();
   display.textContent = value;
 
 
 };
 
+// clears the expression object when an evaluation occurs
 const clearExpression = function () {
   expression.operator = '';
   expression.leftValue = '';
   expression.rightValue = '';
 };
 
+// event listener that updates the expression object values
 const updateValue = function (e) {
   if (e.target.textContent == 'C') {
     updateDisplay('');
@@ -83,6 +92,7 @@ const updateValue = function (e) {
   );
 };
 
+// event listener that updates expression object operator property
 const updateOperator = function (e) {
   if (
     !expression.leftValue ||
@@ -116,16 +126,23 @@ const updateOperator = function (e) {
   console.log(expression);
 };
 
+//////////////////
+// main
+/////////////////
+
+// add event listener to all numbers
 const numbers = document.querySelectorAll('.number');
 numbers.forEach((number) => {
   number.addEventListener('click', updateValue);
 });
 
+// add event listener to all operators
 const operations = document.querySelectorAll('.operation');
 operations.forEach((operation) => {
   operation.addEventListener('click', updateOperator);
 });
 
+// object to hold latest expression for evaluation
 const expression = {
   operator: '',
   leftValue: '',
