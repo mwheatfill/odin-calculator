@@ -43,7 +43,7 @@ const operate = (operator, firstValue, secondValue) => {
 
 // disables decimal button if it is detected in value
 const toggleDecimalButton = function () {
-  console.log(expression.leftValue)
+  console.log(expression.leftValue);
   if (expression.leftValue.includes('.') && expression.operator == '') {
     return true;
   } else if (expression.operator != '' && expression.rightValue.includes('.')) {
@@ -57,11 +57,8 @@ const toggleDecimalButton = function () {
 const updateDisplay = function (value) {
   const display = document.querySelector('.display');
   const decimalButton = document.querySelector('#decimal');
-
   decimalButton.disabled = toggleDecimalButton();
   display.textContent = value;
-
-
 };
 
 // clears the expression object when an evaluation occurs
@@ -116,12 +113,17 @@ const updateOperator = function (e) {
       Number(expression.rightValue)
     );
     clearExpression();
-    expression.leftValue = String(result).substring(0, 10);
-    e.target.textContent != '='
-      ? (expression.operator = e.target.textContent)
-      : (expression.operator = '');
-    updateDisplay('');
-    updateDisplay(`${expression.leftValue} ${expression.operator}`);
+
+    if (result == 'Infinity') {
+      updateDisplay('To infinity and beyond!');
+    } else {
+      expression.leftValue = String(result).substring(0, 10);
+
+      e.target.textContent != '='
+        ? (expression.operator = e.target.textContent)
+        : (expression.operator = '');
+        updateDisplay(`${expression.leftValue} ${expression.operator}`);
+    }
   }
   console.log(expression);
 };
